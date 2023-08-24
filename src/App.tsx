@@ -1,5 +1,5 @@
+import { useState } from "react";
 import styled from "@emotion/styled";
-import { fibonacci } from "./utils";
 
 const CanvasStyled = styled.canvas`
     width: 100%;
@@ -28,12 +28,30 @@ const NavigationStyled = styled.ul`
 `;
 
 function App() {
+    const [state, setState] = useState<number[]>([1]);
+
+    function handleAdd() {
+        const { length } = state;
+
+        setState(
+            length === 1
+                ? [1, 1]
+                : [...state, state[length - 2] + state[length - 1]], // 피보나치
+        );
+    }
+
+    function handlePop() {
+        if (state.length !== 1) {
+            setState(state.slice(0, -1));
+        }
+    }
+
     return (
         <>
-            <CanvasStyled id="myCanvas"></CanvasStyled>
+            {/* <CanvasStyled id="myCanvas"></CanvasStyled> */}
             <NavigationStyled>
-                <li>+</li>
-                <li>-</li>
+                <li onClick={handleAdd}>+</li>
+                <li onClick={handlePop}>-</li>
             </NavigationStyled>
         </>
     );
