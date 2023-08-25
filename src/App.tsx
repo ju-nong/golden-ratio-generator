@@ -2,7 +2,6 @@ import { useState } from "react";
 import styled from "@emotion/styled";
 import { Fibonacci } from "./types";
 import { SVGContainer } from "./components";
-import { newEntity } from "./utils";
 
 const NavigationStyled = styled.ul`
     position: fixed;
