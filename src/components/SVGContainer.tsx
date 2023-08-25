@@ -1,5 +1,14 @@
 import { Fragment } from "react";
 import { Fibonacci } from "../types";
+import styled from "@emotion/styled";
+
+const SVGStyled = styled.svg`
+    transform: scaleX(-1) rotate(-90deg);
+    position: absolute;
+    z-index: 10;
+    top: -73.5%;
+    left: -87%;
+`;
 
 interface SVGContainerProps {
     canvasSize: number;
@@ -13,7 +22,7 @@ function SVGContainer({
     fibonaccis,
 }: SVGContainerProps) {
     return (
-        <svg
+        <SVGStyled
             width={canvasSize}
             height={canvasSize}
             xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +37,7 @@ function SVGContainer({
                         <Fragment key={index}>
                             <rect
                                 fill="none"
-                                stroke="black"
+                                stroke="white"
                                 x={x}
                                 y={y}
                                 width={size}
@@ -37,14 +46,14 @@ function SVGContainer({
                             <path
                                 d={path}
                                 fill="none"
-                                stroke="black"
+                                stroke="white"
                                 stroke-width="3"
                             />
                         </Fragment>
                     );
                 },
             )}
-        </svg>
+        </SVGStyled>
     );
 }
 

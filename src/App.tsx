@@ -3,6 +3,11 @@ import styled from "@emotion/styled";
 import { Fibonacci } from "./types";
 import { SVGContainer } from "./components";
 
+const Container = styled.div`
+    position: relative;
+    overflow: hidden;
+`;
+
 const NavigationStyled = styled.ul`
     position: fixed;
     left: 50%;
@@ -11,15 +16,16 @@ const NavigationStyled = styled.ul`
     column-gap: 10px;
     list-style: none;
     transform: translateX(-50%);
+    z-index: 20;
 
     > li {
-        font-size: 22px;
+        font-size: 30px;
         font-weight: bold;
         cursor: pointer;
-        border: 1px solid #e8e8e8;
+        background-color: #fff;
         border-radius: 4px;
-        width: 30px;
-        line-height: 30px;
+        width: 50px;
+        line-height: 50px;
         text-align: center;
     }
 `;
@@ -27,7 +33,7 @@ const NavigationStyled = styled.ul`
 function App() {
     const config = {
         canvasSize: 1920,
-        entitySize: 16.18,
+        entitySize: 21.034, // 16.18 * 13
     };
     const halfCanvasSize = config.canvasSize / 2;
 
@@ -122,7 +128,8 @@ function App() {
     }
 
     return (
-        <>
+        <Container>
+            <img src="/meisje-met-de-parel.webp" />
             <SVGContainer
                 canvasSize={config.canvasSize}
                 entitySize={config.entitySize}
@@ -133,7 +140,7 @@ function App() {
                 <li onClick={handlePush}>+</li>
                 <li onClick={handlePop}>-</li>
             </NavigationStyled>
-        </>
+        </Container>
     );
 }
 
